@@ -40,11 +40,14 @@ services:
       - CHOKIDAR_USEPOLLING=true
   elastic-agent:
     image: docker.elastic.co/beats/elastic-agent:8.9.2
+    container_name: elastic-agent
+    restart: always
+    user: root
     environment:
       - FLEET_ENROLL=1
       - FLEET_URL=https://5e762062893f451d9285aa0c70244088.fleet.us-central1.gcp.cloud.es.io:443 
       - FLEET_ENROLLMENT_TOKEN=YWRwRmlZb0JpcDFlZ2d3aDZINkE6RW5RMmV0X2dSZFNRVVNtTFYxYkZEdw==
-    restart: always
+    
 networks:
   db_network:
     driver: bridge
